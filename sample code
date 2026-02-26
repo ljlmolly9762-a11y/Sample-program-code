@@ -1,0 +1,259 @@
+C程序源码：
+void functionA(int a, int b) {
+    int result;
+    switch (a) {
+        case 0:
+            result += b;
+            break;
+        case 1:
+            result -= b;
+            break;
+        default:
+            result = 8;
+            break;
+    }
+}
+
+void functionB(int x, int y) {
+    int result;
+    switch (x) {
+        case 0:
+            result += y;
+            break;
+        case 1:
+            result -= y;
+            break;
+        default:
+            result = 8;
+            break;
+    }
+}
+
+void SYSMain(void)
+{
+    int i, j, k;
+    int resultA, resultB, resultC;
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < 2; j++) {
+            k = i + j;
+            switch (i) {
+                case 0:
+                    resultA = k + i;
+                    functionA(i, j);
+                    break;
+                case 1:
+                    resultB = k + j;
+                    functionB(i, j);
+                    break;
+                case 2:
+                    resultC = k + i + j;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+while(1);
+}
+列表文件部分内容（C程序对应部分）： 
+4000a8b0 <functionA>:
+void functionA(int a, int b) {
+4000a8b0:	9d e3 bf 90 	save  %sp, -112, %sp
+4000a8b4:	f0 27 a0 44 	st  %i0, [ %fp + 0x44 ]
+4000a8b8:	f2 27 a0 48 	st  %i1, [ %fp + 0x48 ]
+    int result;
+    switch (a) {
+4000a8bc:	d0 07 a0 44 	ld  [ %fp + 0x44 ], %o0
+4000a8c0:	d0 27 bf f0 	st  %o0, [ %fp + -16 ]
+4000a8c4:	d0 07 bf f0 	ld  [ %fp + -16 ], %o0
+4000a8c8:	80 a2 20 00 	cmp  %o0, 0
+4000a8cc:	02 80 00 08 	be  4000a8ec <functionA+0x3c>
+4000a8d0:	01 00 00 00 	nop 
+4000a8d4:	d0 07 bf f0 	ld  [ %fp + -16 ], %o0
+4000a8d8:	80 a2 20 01 	cmp  %o0, 1
+4000a8dc:	02 80 00 0a 	be  4000a904 <functionA+0x54>
+4000a8e0:	01 00 00 00 	nop 
+4000a8e4:	10 80 00 0e 	b  4000a91c <functionA+0x6c>
+4000a8e8:	01 00 00 00 	nop 
+        case 0:
+            result += b;
+4000a8ec:	f0 07 bf f4 	ld  [ %fp + -12 ], %i0
+4000a8f0:	f2 07 a0 48 	ld  [ %fp + 0x48 ], %i1
+4000a8f4:	b0 06 00 19 	add  %i0, %i1, %i0
+4000a8f8:	f0 27 bf f4 	st  %i0, [ %fp + -12 ]
+            break;
+4000a8fc:	10 80 00 0a 	b  4000a924 <functionA+0x74>
+4000a900:	01 00 00 00 	nop 
+        case 1:
+            result -= b;
+4000a904:	f0 07 bf f4 	ld  [ %fp + -12 ], %i0
+4000a908:	f2 07 a0 48 	ld  [ %fp + 0x48 ], %i1
+4000a90c:	b0 26 00 19 	sub  %i0, %i1, %i0
+4000a910:	f0 27 bf f4 	st  %i0, [ %fp + -12 ]
+            break;
+4000a914:	10 80 00 04 	b  4000a924 <functionA+0x74>
+4000a918:	01 00 00 00 	nop 
+        default:
+            result = 8;
+4000a91c:	b0 10 20 08 	mov  8, %i0	! 8 <PROM_START+0x8>
+4000a920:	f0 27 bf f4 	st  %i0, [ %fp + -12 ]
+            break;
+    }
+}
+4000a924:	01 00 00 00 	nop 
+4000a928:	81 c7 e0 08 	ret 
+4000a92c:	81 e8 00 00 	restore 
+4000a930 <functionB>:
+void functionB(int x, int y) {
+4000a930:	9d e3 bf 90 	save  %sp, -112, %sp
+4000a934:	f0 27 a0 44 	st  %i0, [ %fp + 0x44 ]
+4000a938:	f2 27 a0 48 	st  %i1, [ %fp + 0x48 ]
+    int result;
+    switch (x) {
+4000a93c:	d0 07 a0 44 	ld  [ %fp + 0x44 ], %o0
+4000a940:	d0 27 bf f0 	st  %o0, [ %fp + -16 ]
+4000a944:	d0 07 bf f0 	ld  [ %fp + -16 ], %o0
+4000a948:	80 a2 20 00 	cmp  %o0, 0
+4000a94c:	02 80 00 08 	be  4000a96c <functionB+0x3c>
+4000a950:	01 00 00 00 	nop 
+4000a954:	d0 07 bf f0 	ld  [ %fp + -16 ], %o0
+4000a958:	80 a2 20 01 	cmp  %o0, 1
+4000a95c:	02 80 00 0a 	be  4000a984 <functionB+0x54>
+4000a960:	01 00 00 00 	nop 
+4000a964:	10 80 00 0e 	b  4000a99c <functionB+0x6c>
+4000a968:	01 00 00 00 	nop 
+        case 0:
+            result += y;
+4000a96c:	f0 07 bf f4 	ld  [ %fp + -12 ], %i0
+4000a970:	f2 07 a0 48 	ld  [ %fp + 0x48 ], %i1
+4000a974:	b0 06 00 19 	add  %i0, %i1, %i0
+4000a978:	f0 27 bf f4 	st  %i0, [ %fp + -12 ]
+            break;
+4000a97c:	10 80 00 0a 	b  4000a9a4 <functionB+0x74>
+4000a980:	01 00 00 00 	nop 
+        case 1:
+            result -= y;
+4000a984:	f0 07 bf f4 	ld  [ %fp + -12 ], %i0
+4000a988:	f2 07 a0 48 	ld  [ %fp + 0x48 ], %i1
+4000a98c:	b0 26 00 19 	sub  %i0, %i1, %i0
+4000a990:	f0 27 bf f4 	st  %i0, [ %fp + -12 ]
+            break;
+4000a994:	10 80 00 04 	b  4000a9a4 <functionB+0x74>
+4000a998:	01 00 00 00 	nop 
+        default:
+            result = 8;
+4000a99c:	b0 10 20 08 	mov  8, %i0	! 8 <PROM_START+0x8>
+4000a9a0:	f0 27 bf f4 	st  %i0, [ %fp + -12 ]
+            break;
+    }
+}
+4000a9a4:	01 00 00 00 	nop 
+4000a9a8:	81 c7 e0 08 	ret 
+4000a9ac:	81 e8 00 00 	restore 
+4000a9b0 <SYSMain>:
+void SYSMain(void)
+{
+4000a9b0:	9d e3 bf 78 	save  %sp, -136, %sp
+    int i, j, k;
+    int resultA, resultB, resultC;
+    for (i = 0; i < 3; i++) {
+4000a9b4:	c0 27 bf f4 	clr  [ %fp + -12 ]
+4000a9b8:	d0 07 bf f4 	ld  [ %fp + -12 ], %o0
+4000a9bc:	80 a2 20 02 	cmp  %o0, 2
+4000a9c0:	04 80 00 04 	ble  4000a9d0 <SYSMain+0x20>
+4000a9c4:	01 00 00 00 	nop 
+4000a9c8:	10 80 00 47 	b  4000aae4 <SYSMain+0x134>
+4000a9cc:	01 00 00 00 	nop 
+        for (j = 0; j < 2; j++) {
+4000a9d0:	c0 27 bf f0 	clr  [ %fp + -16 ]
+4000a9d4:	d0 07 bf f0 	ld  [ %fp + -16 ], %o0
+4000a9d8:	80 a2 20 01 	cmp  %o0, 1
+4000a9dc:	04 80 00 04 	ble  4000a9ec <SYSMain+0x3c>
+4000a9e0:	01 00 00 00 	nop 
+4000a9e4:	10 80 00 3b 	b  4000aad0 <SYSMain+0x120>
+4000a9e8:	01 00 00 00 	nop 
+            k = i + j;
+4000a9ec:	d0 07 bf f4 	ld  [ %fp + -12 ], %o0
+4000a9f0:	d2 07 bf f0 	ld  [ %fp + -16 ], %o1
+4000a9f4:	90 02 00 09 	add  %o0, %o1, %o0
+4000a9f8:	d0 27 bf ec 	st  %o0, [ %fp + -20 ]
+            switch (i) {
+4000a9fc:	d0 07 bf f4 	ld  [ %fp + -12 ], %o0
+4000aa00:	d0 27 bf dc 	st  %o0, [ %fp + -36 ]
+4000aa04:	d0 07 bf dc 	ld  [ %fp + -36 ], %o0
+4000aa08:	80 a2 20 01 	cmp  %o0, 1
+4000aa0c:	02 80 00 1c 	be  4000aa7c <SYSMain+0xcc>
+4000aa10:	01 00 00 00 	nop 
+4000aa14:	d0 07 bf dc 	ld  [ %fp + -36 ], %o0
+4000aa18:	80 a2 20 01 	cmp  %o0, 1
+4000aa1c:	14 80 00 08 	bg  4000aa3c <SYSMain+0x8c>
+4000aa20:	01 00 00 00 	nop 
+4000aa24:	d0 07 bf dc 	ld  [ %fp + -36 ], %o0
+4000aa28:	80 a2 20 00 	cmp  %o0, 0
+4000aa2c:	02 80 00 0a 	be  4000aa54 <SYSMain+0xa4>
+4000aa30:	01 00 00 00 	nop 
+4000aa34:	10 80 00 22 	b  4000aabc <SYSMain+0x10c>
+4000aa38:	01 00 00 00 	nop 
+4000aa3c:	d0 07 bf dc 	ld  [ %fp + -36 ], %o0
+4000aa40:	80 a2 20 02 	cmp  %o0, 2
+4000aa44:	02 80 00 18 	be  4000aaa4 <SYSMain+0xf4>
+4000aa48:	01 00 00 00 	nop 
+4000aa4c:	10 80 00 1c 	b  4000aabc <SYSMain+0x10c>
+4000aa50:	01 00 00 00 	nop 
+                case 0:resultA = k + i;
+4000aa54:	d0 07 bf ec 	ld  [ %fp + -20 ], %o0
+4000aa58:	d2 07 bf f4 	ld  [ %fp + -12 ], %o1
+4000aa5c:	90 02 00 09 	add  %o0, %o1, %o0
+4000aa60:	d0 27 bf e8 	st  %o0, [ %fp + -24 ]
+                    functionA(i, j);
+4000aa64:	d0 07 bf f4 	ld  [ %fp + -12 ], %o0
+4000aa68:	d2 07 bf f0 	ld  [ %fp + -16 ], %o1
+4000aa6c:	7f ff ff 91 	call  4000a8b0 <functionA>
+4000aa70:	01 00 00 00 	nop 
+                    break;
+4000aa74:	10 80 00 12 	b  4000aabc <SYSMain+0x10c>
+4000aa78:	01 00 00 00 	nop 
+                case 1:resultB = k + j;
+4000aa7c:	d0 07 bf ec 	ld  [ %fp + -20 ], %o0
+4000aa80:	d2 07 bf f0 	ld  [ %fp + -16 ], %o1
+4000aa84:	90 02 00 09 	add  %o0, %o1, %o0
+4000aa88:	d0 27 bf e4 	st  %o0, [ %fp + -28 ]
+                    functionB(i, j);
+4000aa8c:	d0 07 bf f4 	ld  [ %fp + -12 ], %o0
+4000aa90:	d2 07 bf f0 	ld  [ %fp + -16 ], %o1
+4000aa94:	7f ff ff a7 	call  4000a930 <functionB>
+4000aa98:	01 00 00 00 	nop 
+                    break;
+4000aa9c:	10 80 00 08 	b  4000aabc <SYSMain+0x10c>
+4000aaa0:	01 00 00 00 	nop 
+                case 2:resultC = k + i + j;
+4000aaa4:	d2 07 bf ec 	ld  [ %fp + -20 ], %o1
+4000aaa8:	d0 07 bf f4 	ld  [ %fp + -12 ], %o0
+4000aaac:	92 02 40 08 	add  %o1, %o0, %o1
+4000aab0:	d0 07 bf f0 	ld  [ %fp + -16 ], %o0
+4000aab4:	90 02 40 08 	add  %o1, %o0, %o0
+4000aab8:	d0 27 bf e0 	st  %o0, [ %fp + -32 ]
+4000aabc:	d0 07 bf f0 	ld  [ %fp + -16 ], %o0
+4000aac0:	90 02 20 01 	inc  %o0
+4000aac4:	d0 27 bf f0 	st  %o0, [ %fp + -16 ]
+4000aac8:	10 bf ff c3 	b  4000a9d4 <SYSMain+0x24>
+4000aacc:	01 00 00 00 	nop 
+4000aad0:	d0 07 bf f4 	ld  [ %fp + -12 ], %o0
+4000aad4:	90 02 20 01 	inc  %o0
+4000aad8:	d0 27 bf f4 	st  %o0, [ %fp + -12 ]
+4000aadc:	10 bf ff b7 	b  4000a9b8 <SYSMain+0x8>
+4000aae0:	01 00 00 00 	nop 
+4000aae4:	01 00 00 00 	nop 
+                    break;
+                default:break;
+            }
+        }
+    }
+while(1);
+4000aae8:	10 80 00 00 	b  4000aae8 <SYSMain+0x138>
+4000aaec:	01 00 00 00 	nop 
+}
+4000aaf0:	01 00 00 00 	nop
+
+
+
